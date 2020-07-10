@@ -43,11 +43,8 @@
 
 #### 软件架构
 
-<<<<<<< HEAD
 采用目前较为流行的`MVVM(Model-View-ViewModel)`架构，使得内部逻辑与显示界面完全解耦。
-=======
-采用目前较为流行的**MVVM(Model-View-ViewModel)**架构，使得内部逻辑与显示界面完全解耦。
->>>>>>> 18caebd29f99f7937427b50adae4e9f9e1da508e
+
 
 #### 持续集成
 
