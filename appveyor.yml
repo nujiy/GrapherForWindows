@@ -18,6 +18,7 @@ before_build:
   - if "%platform%"=="x64" set vcvars=%vs%\vcvars64.bat
 
 build_script:
+  - echo %PATH%
   - call "%vcvars%"
   - qmake
   - mingw32-make
