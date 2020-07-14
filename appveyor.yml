@@ -12,8 +12,8 @@ environment:
 before_build:
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" set msvc=msvc2017
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" set vs=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build
-  - if "%platform%"=="x64" set QTDIR=C:\Qt\Qt5.14.1\5.14.1\mingw73_64
-  - if "%platform%"=="x64" set QTTOOLS=C:\Qt\Qt5.14.1\Tools\mingw730_64
+  - if "%platform%"=="x64" set QTDIR=QTDIR=C:\Qt\%qt%\mingw73_64
+  - if "%platform%"=="x64" set QTTOOLS=C:\Qt\Tools\mingw730_64
   - set PATH=%PATH%;%QTDIR%\bin;C:MinGW\bin;%QTTOOLS%\bin;
   - if "%platform%"=="x64" set vcvars=%vs%\vcvars64.bat
 
