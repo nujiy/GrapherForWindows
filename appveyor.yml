@@ -35,7 +35,7 @@ artifacts:
 
 deploy:
   provider: GitHub
-  auth_token: $(GITHUB_OAUTH_TOKEN)
+  auth_token: eb981b2d549a7c8678927c0001c0050ce1eb4389
   description: "Grapher For Windows release version."
   draft: true
   prerelease: false
