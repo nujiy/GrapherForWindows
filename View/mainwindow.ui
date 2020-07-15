@@ -41,12 +41,18 @@
      <rect>
       <x>270</x>
       <y>20</y>
-      <width>291</width>
+      <width>301</width>
       <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Courier New</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="placeholderText">
-     <string>      Input Function Expression At Here</string>
+     <string>&lt;Input Function Expression Here&gt;</string>
     </property>
    </widget>
    <widget class="QCustomPlot" name="CustomPlot" native="true">

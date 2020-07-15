@@ -15,10 +15,10 @@ class startinterface : public QWidget
 public:
     startinterface(QWidget *parent = nullptr);
     ~startinterface();
-    void set_command(std::shared_ptr<ICommandBase>& command);
+    void set_command(std::shared_ptr<ICommandBase> command);
 
 public slots:
-    void on_EnterButtion_clicked();
+    void on_EnterButton_clicked();
     void on_ExitButton_clicked();
 
 private:
