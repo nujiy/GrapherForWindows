@@ -36,9 +36,10 @@ artifacts:
 deploy:
   provider: GitHub
   tag: $(APPVEYOR_REPO_TAG_NAME)
-  auth_token: $(GITHUB_OAUTH_TOKEN)
+  auth_token:
+    secure: 1866e7cbdbd8e3fd7eb26960e46a0cd87eb9c070
   description: "Grapher For Windows release version."
-  draft: false
+  draft: true
   prerelease: false
   on:
       branch: master
