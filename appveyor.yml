@@ -20,6 +20,8 @@ before_build:
 build_script:
   - call "%vcvars%"
   - echo %PATH%
+  - echo %QTDIR%
+  - echo %QTTOOLS%
   - qmake Grapher.pro
   - mingw32-make
 
