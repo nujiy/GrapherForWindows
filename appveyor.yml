@@ -6,23 +6,20 @@ environment:
   matrix:
   - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     platform: x64
-    qt: 5.14.1
-    releaseName: Grapher_For_Windows_qt5141_vs2019_x64
+    qt: 5.14.2
+    releaseName: Grapher_For_Windows_qt5142_vs2019_x64
 
 before_build:
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" set msvc=msvc2017
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" set vs=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build
-  - if "%platform%"=="x64" set QTDIR=C:\Qt\Qt%qt%\%qt%\mingw73_64
-  - if "%platform%"=="x64" set QTTOOLS=C:\Qt\Qt%qt%\Tools\mingw730_64
+  - if "%platform%"=="x64" set QTDIR=C:\Qt\%qt%\mingw73_64
+  - if "%platform%"=="x64" set QTTOOLS=C:\Qt\Tools\mingw730_64
   - set PATH=%PATH%;%QTDIR%\bin;C:MinGW\bin;%QTTOOLS%\bin;
   - if "%platform%"=="x64" set vcvars=%vs%\vcvars64.bat
 
 build_script:
   - call "%vcvars%"
-  - echo %PATH%
-  - echo %QTDIR%
-  - echo %QTTOOLS%
-  - qmake Grapher.pro
+  - qmake
   - mingw32-make
 
 after_build:
