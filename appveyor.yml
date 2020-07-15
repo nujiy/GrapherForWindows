@@ -23,21 +23,22 @@ build_script:
   - mingw32-make
 
 after_build:
-  - if "%APPVEYOR_REPO_TAG%"=="true" windeployqt release\Grapher.exe --qmldir %QTDIR%\qml
+  - windeployqt release\Grapher.exe --qmldir %QTDIR%\qml
   - cd release
   - del *.o /s/q
   - del *.cpp /s/q
   - del *.h /s/q
 
 artifacts:
-  - path: release
+  - path: release/
     name: $(releaseName)
 
 deploy:
   provider: GitHub
+  tag: $(APPVEYOR_REPO_TAG_NAME)
   auth_token: $(GITHUB_OAUTH_TOKEN)
   description: "Grapher For Windows release version."
-  draft: flase
+  draft: false
   prerelease: false
   on:
       branch: master
