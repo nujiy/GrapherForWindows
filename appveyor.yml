@@ -37,7 +37,7 @@ deploy:
   provider: GitHub
   auth_token: $(GITHUB_OAUTH_TOKEN)
   description: "Grapher For Windows release version."
-  draft: true
+  draft: flase
   prerelease: false
   on:
       branch: master
