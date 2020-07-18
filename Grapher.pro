@@ -21,7 +21,7 @@ SOURCES += \
     App/APP.cpp \
     Lib/qcustomplot.cpp \
     View/mainwindow.cpp \
-    main.cpp \
+    App/main.cpp \
     View/startinterface.cpp
 
 HEADERS += \
