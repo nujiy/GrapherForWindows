@@ -1,3 +1,3 @@
 # GrapherForWindows
 
-This depository is built for Teacher Yuan Xin's courses.
+This repository is built for Teacher Yuan Xin's course.
