@@ -36,4 +36,4 @@ private:
     string str;
 };
 
-#endif CALCULUSCOMMAND_H
+#endif 
