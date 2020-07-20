@@ -17,14 +17,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Algorithm/Lexer.cpp \
+    Algorithm/Tree.cpp \
     App/StartUICommand/StartUICommand.cpp \
     App/APP.cpp \
     Lib/qcustomplot.cpp \
     View/mainwindow.cpp \
-    main.cpp \
+    App/main.cpp \
     View/startinterface.cpp
 
 HEADERS += \
+    Algorithm/Lexer.h \
+    Algorithm/Tree.h \
     App/StartUICommand/StartUICommand.h \
     App/APP.h \
     Lib/qcustomplot.h \
