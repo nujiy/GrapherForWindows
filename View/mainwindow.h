@@ -7,6 +7,8 @@
 #include <QInputDialog>
 #include <Common/etlbase.h>
 #include <Lib/qcustomplot.h>
+#include <View/MainWindowProSink/mainwindowprosink.h>
+#include <View/MainWindowSetSink/mainwindowsetsink.h>
 
 namespace Ui {
 class MainWindow;
@@ -20,9 +22,17 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void GraphPlot();
+    void PaintFailed();
+    void PaintSucceed();
+    void set_x(std::shared_ptr<QVector<double>> x);
+    void set_y(std::shared_ptr<QVector<double>> y);
+    void Set_Paint_Command(std::shared_ptr<ICommandBase> ptrCmd);
+    std::shared_ptr<IPropertyNotification> getProSink(void);
+    std::shared_ptr<ICommandNotification> getSetSink(void);
 
 protected slots:
     void Save_Plot_As_PNG();
+    void on_AddButton_clicked();
     void on_ClearButton_clicked();
     void on_RemoveButton_clicked();
     void selectionChanged();
@@ -39,7 +49,12 @@ protected slots:
     void graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
 
 private:
+    QLabel* message;
     Ui::MainWindow *ui;
+    std::shared_ptr<QVector<double>> x,y;
+    std::shared_ptr<ICommandBase> PaintCommand;
+    std::shared_ptr<MainWindowProSink> ptr_ProSink;
+    std::shared_ptr<MainWindowSetSink> ptr_SetSink;
 };
 
 #endif // MAINWINDOW_H

@@ -1,5 +1,5 @@
-#include "viewmodelsink.h"
-#include "../viewmodel.h"
+#include "ViewModel/Sinks/ViewModelSink.h"
+#include "ViewModel/ViewModel.h"
 ViewModelSink::ViewModelSink(ViewModel *ptr)
 {
     ptr_ViewModel = ptr;

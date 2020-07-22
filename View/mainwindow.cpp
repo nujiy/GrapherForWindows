@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // https://www.qcustomplot.com/index.php/demos/interactionexample(reference)
     srand(QDateTime::currentDateTime().toTime_t());
     ui->setupUi(this);
+    message = new QLabel;
+    ptr_ProSink = std::make_shared<MainWindowProSink>(MainWindowProSink(this));
+    ptr_SetSink = std::make_shared<MainWindowSetSink>(MainWindowSetSink(this));
 
     // QCustomPlot::setInteractions() sets possible interactions of QCustomPlot
     // as an OR-combination of QCP::Interaction enums.
@@ -15,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                     QCP::iSelectPlottables | QCP::iSelectAxes | QCP::iSelectLegend);
 
     // This part deals with settings of xAxis and yAxis.
-    ui->CustomPlot->xAxis->setRange(-8,8);    // initial xAxis range.
+    ui->CustomPlot->xAxis->setRange(-8,8);      // initial xAxis range.
     ui->CustomPlot->yAxis->setRange(-5,5);      // initial yAxis range.
     // grid setting.
     ui->CustomPlot->xAxis->grid()->setPen(QPen(QColor(180,180,180),1,Qt::PenStyle::DashLine));
@@ -328,4 +331,75 @@ void MainWindow::on_ClearButton_clicked()
 void MainWindow::on_RemoveButton_clicked()
 {
     removeSelectedGraph();
+}
+
+void MainWindow::on_AddButton_clicked()
+{
+    QString Qstr = ui->FunctionInput->text();
+    std::string str = Qstr.toStdString();
+
+    // graph paint range
+    double lower = -10;
+    double upper = 10;
+
+    PaintCommand->SetParameter(str,lower,upper);
+    PaintCommand->Exec();
+}
+
+void MainWindow::GraphPlot()
+{
+    ui->CustomPlot->addGraph();
+    ui->CustomPlot->graph()->setName(ui->FunctionInput->text());    // set Function Name equal to Function Input
+
+    ui->CustomPlot->graph()->setData(*x,*y);    // pass coordinate points to graph
+    ui->CustomPlot->graph()->rescaleAxes();
+
+    ui->CustomPlot->graph()->setPen(QPen(QColor(0,0,0,255)));
+    ui->CustomPlot->graph()->setBrush(QBrush(QColor(0,0,200,40)));
+
+    // if there are one or more graphs, show the legend.
+    if(ui->CustomPlot->graphCount() > 0)
+        ui->CustomPlot->legend->setVisible(true);
+
+    ui->FunctionInput->clear();  // prepare for user input next time.
+    ui->CustomPlot->replot();
+}
+
+void MainWindow::set_x(std::shared_ptr<QVector<double> > x)
+{
+    this->x = x;
+}
+
+void MainWindow::set_y(std::shared_ptr<QVector<double> > y)
+{
+    this->y = y;
+}
+
+void MainWindow::Set_Paint_Command(std::shared_ptr<ICommandBase> ptrCmd)
+{
+    this->PaintCommand = ptrCmd;
+}
+
+std::shared_ptr<ICommandNotification> MainWindow::getSetSink()
+{
+    return std::static_pointer_cast<ICommandNotification>(ptr_SetSink);
+}
+
+std::shared_ptr<IPropertyNotification> MainWindow::getProSink()
+{
+    return std::static_pointer_cast<IPropertyNotification>(ptr_ProSink);
+}
+
+void MainWindow::PaintFailed()
+{
+    QString msg = "Unexpected Input Function.";
+    message->setText(msg);
+    ui->statusbar->addWidget(message);
+}
+
+void MainWindow::PaintSucceed()
+{
+    QString msg = "Successfully Plot Graph.";
+    message->setText(msg);
+    ui->statusbar->addWidget(message);
 }

@@ -1,7 +1,7 @@
 #ifndef VIEWMODELCMD_H
 #define VIEWMODELCMD_H
 #include <string>
-#include "../../Common/etlbase.h"
+#include "Common/etlbase.h"
 
 using std::string;
 
@@ -21,4 +21,4 @@ private:
     string str;
 };
 
-#endif VIEWMODELCMD_H
+#endif //VIEWMODELCMD_H

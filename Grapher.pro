@@ -17,6 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    View/MainWindowProSink/mainwindowprosink.cpp \
+    View/MainWindowSetSink/mainwindowsetsink.cpp \
+    ViewModel/Commands/PaintCommand.cpp \
+    ViewModel/Sinks/ViewModelSink.cpp \
     Algorithm/Lexer.cpp \
     Algorithm/Tree.cpp \
     App/StartUICommand/StartUICommand.cpp \
@@ -24,9 +28,15 @@ SOURCES += \
     Lib/qcustomplot.cpp \
     View/mainwindow.cpp \
     App/main.cpp \
-    View/startinterface.cpp
+    View/startinterface.cpp \
+    ViewModel/ViewModel.cpp \
+    Model/Model.cpp
 
 HEADERS += \
+    View/MainWindowProSink/mainwindowprosink.h \
+    View/MainWindowSetSink/mainwindowsetsink.h \
+    ViewModel/Commands/PaintCommand.h \
+    ViewModel/Sinks/ViewModelSink.h \
     Algorithm/Lexer.h \
     Algorithm/Tree.h \
     App/StartUICommand/StartUICommand.h \
@@ -34,7 +44,9 @@ HEADERS += \
     Lib/qcustomplot.h \
     Common/etlbase.h \
     View/mainwindow.h \
-    View/startinterface.h
+    View/startinterface.h \
+    ViewModel/ViewModel.h \
+    Model/Model.h
 
 FORMS += \
     View/mainwindow.ui \
