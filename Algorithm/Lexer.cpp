@@ -290,3 +290,28 @@ double Lexer::calculate(double x)
         return ans;
     return 0.0;
 }
+
+// for simplicity, we only consider b > a,
+// and leave b <= a at View Layer.
+double Lexer::integralcal(double a, double b)
+{
+    double length = b - a;
+    double interval = 1e-6;
+    double result = 0.0;
+    unsigned long N = (unsigned long)length/interval;
+
+    for (unsigned long i = 0; i < N; i++)
+    {
+        // brute-force way.
+        result += calculate(a+i*interval) * interval;
+    }
+
+    return result;
+
+}
+
+double Lexer::differentialCal(double x)
+{
+    double delta = 1e-10;
+    return (calculate(x+delta)-calculate(x-delta))/(2*delta);
+}
