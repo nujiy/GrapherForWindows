@@ -335,15 +335,25 @@ void MainWindow::on_RemoveButton_clicked()
 
 void MainWindow::on_AddButton_clicked()
 {
+    bool ok(false);
     QString Qstr = ui->FunctionInput->text();
     std::string str = Qstr.toStdString();
 
+    QString qlowerbound = ui->LowerBound->text();
+    QString qupperbound = ui->UpperBound->text();
+
     // graph paint range
-    double lower = -10;
-    double upper = 10;
+    double lower = qlowerbound.isEmpty()? -10: qlowerbound.toDouble(&ok);
+    double upper = qupperbound.isEmpty()? +10: qupperbound.toDouble(&ok);
 
     PaintCommand->SetParameter(str,lower,upper);
     PaintCommand->Exec();
+
+    DifferentialCommand->SetParameter(str,lower);
+    DifferentialCommand->Exec();
+
+    IntegralCommand->SetParameter(str,lower,upper);
+    IntegralCommand->Exec();
 }
 
 void MainWindow::GraphPlot()
@@ -361,6 +371,8 @@ void MainWindow::GraphPlot()
     if(ui->CustomPlot->graphCount() > 0)
         ui->CustomPlot->legend->setVisible(true);
 
+    ui->UpperBound->clear();
+    ui->LowerBound->clear();
     ui->FunctionInput->clear();  // prepare for user input next time.
     ui->CustomPlot->replot();
 }
@@ -402,4 +414,34 @@ void MainWindow::PaintSucceed()
     QString msg = "Successfully Plot Graph.";
     message->setText(msg);
     ui->statusbar->addWidget(message);
+}
+
+void MainWindow::setIntegral(std::shared_ptr<double> IntegralAns)
+{
+    this->IntegralAns = IntegralAns;
+}
+
+void MainWindow::SetDifferential(std::shared_ptr<double> DifferentialAns)
+{
+    this->DifferentialAns = DifferentialAns;
+}
+
+void MainWindow::Set_Integral_Command(std::shared_ptr<ICommandBase> ptrCmd)
+{
+    this->IntegralCommand = ptrCmd;
+}
+
+void MainWindow::Set_Differential_Command(std::shared_ptr<ICommandBase> ptrCmd)
+{
+    this->DifferentialCommand = ptrCmd;
+}
+
+void MainWindow::showIntegral()
+{
+    ui->InteResult->setText(QString::number(*IntegralAns));
+}
+
+void MainWindow::showDifferential()
+{
+    ui->Diffresult->setText(QString(QString::number(*DifferentialAns)));
 }

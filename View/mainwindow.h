@@ -27,8 +27,15 @@ public:
     void set_x(std::shared_ptr<QVector<double>> x);
     void set_y(std::shared_ptr<QVector<double>> y);
     void Set_Paint_Command(std::shared_ptr<ICommandBase> ptrCmd);
+    void Set_Differential_Command(std::shared_ptr<ICommandBase> ptrCmd);
+    void Set_Integral_Command(std::shared_ptr<ICommandBase> ptrCmd);
     std::shared_ptr<IPropertyNotification> getProSink(void);
     std::shared_ptr<ICommandNotification> getSetSink(void);
+
+    void setIntegral(std::shared_ptr<double> IntegralAns);
+    void SetDifferential(std::shared_ptr<double> DifferentialAns);
+    void showIntegral();
+    void showDifferential();
 
 protected slots:
     void Save_Plot_As_PNG();
@@ -55,6 +62,10 @@ private:
     std::shared_ptr<ICommandBase> PaintCommand;
     std::shared_ptr<MainWindowProSink> ptr_ProSink;
     std::shared_ptr<MainWindowSetSink> ptr_SetSink;
+
+    std::shared_ptr<ICommandBase> DifferentialCommand;
+    std::shared_ptr<ICommandBase> IntegralCommand;
+    std::shared_ptr<double> IntegralAns, DifferentialAns;
 };
 
 #endif // MAINWINDOW_H

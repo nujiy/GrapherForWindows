@@ -20,6 +20,10 @@ void APP::run()
 
     // binding viewmodel with view
     mainwindow.Set_Paint_Command(viewmodel->getPaintCmd());
+    mainwindow.Set_Integral_Command(viewmodel->getIntegralCmd());
+    mainwindow.Set_Differential_Command(viewmodel->getDifferentialCmd());
+    mainwindow.setIntegral(viewmodel->getIntegral());
+    mainwindow.SetDifferential(viewmodel->getDifferential());
     mainwindow.set_x(viewmodel->getX());
     mainwindow.set_y(viewmodel->getY());
 

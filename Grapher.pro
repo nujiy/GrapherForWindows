@@ -20,6 +20,8 @@ SOURCES += \
     View/MainWindowProSink/mainwindowprosink.cpp \
     View/MainWindowSetSink/mainwindowsetsink.cpp \
     ViewModel/Commands/PaintCommand.cpp \
+    ViewModel/Commands/differentialcommand.cpp \
+    ViewModel/Commands/integralcommand.cpp \
     ViewModel/Sinks/ViewModelSink.cpp \
     Algorithm/Lexer.cpp \
     Algorithm/Tree.cpp \
@@ -36,6 +38,8 @@ HEADERS += \
     View/MainWindowProSink/mainwindowprosink.h \
     View/MainWindowSetSink/mainwindowsetsink.h \
     ViewModel/Commands/PaintCommand.h \
+    ViewModel/Commands/differentialcommand.h \
+    ViewModel/Commands/integralcommand.h \
     ViewModel/Sinks/ViewModelSink.h \
     Algorithm/Lexer.h \
     Algorithm/Tree.h \
@@ -51,6 +55,8 @@ HEADERS += \
 FORMS += \
     View/mainwindow.ui \
     View/startinterface.ui
+
+RC_FILE = Grapher.rc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
