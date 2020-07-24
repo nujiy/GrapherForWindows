@@ -30,6 +30,8 @@ public:
     bool string_to_tree();
     string getstring();
     double calculate(double x);
+    double differentialCal(double x);
+    double integralcal(double a, double b);
     TNode root;
 };
 

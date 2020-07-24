@@ -1,4 +1,5 @@
 #include "Algorithm/Lexer.h"
+#include "Algorithm/Tree.h"
 
 Lexer::Lexer()
 {
@@ -22,10 +23,10 @@ Lexer::~Lexer()
 // and its descendants.
 void Lexer::drop(TNode node)
 {
-    if (root==nullptr)
+    if (node==nullptr)
         return;
-    drop(root->lchild);
-    drop(root->rchild);
+    drop(node->lchild);
+    drop(node->rchild);
     delete node;
     node = nullptr;
 }
@@ -141,8 +142,8 @@ int Lexer::priority(char c)
     {
         case '+': return AddSub;
         case '-': return AddSub;
-        case '*': return MulDiv;
-        case '/': return MulDiv;
+        case '*': return MulDiv1;
+        case '/': return MulDiv1;
         case '^': return Pow;
         case '(': return LeftBracket;
         case ')': return RightBracket;
@@ -234,13 +235,14 @@ bool Lexer::string_to_tree()
                 }
                 // pop operators until we get an operator whose priority is lower than S[position]
                 // or encounter '('
-                else if (priority(op.top() >= priority(S[position])) && op.top() != '(')
+                else if (priority(op.top()) >= priority(S[position]) && op.top() != '(')
                 {
                     while (!op.empty() && priority(op.top())>=priority(S[position]) && op.top()!='(')
                     {
                         TNode temp = new TreeNode (op.top());
                         temp->rchild = val.top(); val.pop();
                         temp->lchild = val.top(); val.pop();
+                        temp->lchild->parent = temp->rchild->parent = temp;
                         op.pop();
                         val.push(temp);
                     }
@@ -287,4 +289,29 @@ double Lexer::calculate(double x)
     else if(root->calculate(ans, x))
         return ans;
     return 0.0;
+}
+
+// for simplicity, we only consider b > a,
+// and leave b <= a at View Layer.
+double Lexer::integralcal(double a, double b)
+{
+    double length = b - a;
+    double interval = 1e-6;
+    double result = 0.0;
+    unsigned long N = (unsigned long)length/interval;
+
+    for (unsigned long i = 0; i < N; i++)
+    {
+        // brute-force way.
+        result += calculate(a+i*interval) * interval;
+    }
+
+    return result;
+
+}
+
+double Lexer::differentialCal(double x)
+{
+    double delta = 1e-10;
+    return (calculate(x+delta)-calculate(x-delta))/(2*delta);
 }

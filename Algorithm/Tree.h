@@ -14,8 +14,9 @@ const string func[7] = {"sin","cos","tan","abs","sqrt","ln","lg"};
 enum TokenType
 {NUMBER, ALGEBRA,OPERATOR,FUNCTION,NONE,WRONG};
 
+// MulDiv will cause redeclaration of function MulDiv(int,int,int) in Winbase.h
 enum Priority
-{ERROR,RightBracket,AddSub,MulDiv,Pow,LeftBracket};
+{ERROR,RightBracket,AddSub,MulDiv1,Pow,LeftBracket};
 
 class TreeNode {
 private:
