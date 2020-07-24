@@ -13,12 +13,12 @@ void APP::run()
     startwindow.setWindowTitle("Grapher");
     mainwindow.setWindowTitle("Grapher");
 
-    // binding model with viewmodel
+    // binding Model with ViewModel
     model = std::make_shared<Model>();
     viewmodel = std::make_shared<ViewModel>();
     viewmodel->setModel(model);
 
-    // binding viewmodel with view
+    // binding ViewModel with View
     mainwindow.Set_Paint_Command(viewmodel->getPaintCmd());
     mainwindow.Set_Integral_Command(viewmodel->getIntegralCmd());
     mainwindow.Set_Differential_Command(viewmodel->getDifferentialCmd());
