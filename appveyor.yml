@@ -29,12 +29,12 @@ after_build:
   - del *.cpp /s/q
   - del *.h /s/q
 
-build_script:
+test_script:
   - call "%vcvars%"
   - qmake Test/GrapherForWindows_Test.pro
   - mingw32-make
 
-after_build:
+after_test:
   - windeployqt release\GrapherForWindows_Test.exe --qmldir %QTDIR%\qml
   - cd release
   - del *.o /s/q
