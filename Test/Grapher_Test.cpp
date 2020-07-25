@@ -1,5 +1,6 @@
 #include <QTest>
-#include "../ViewModel/Commands/CalculusCommand.h"
+#include "../ViewModel/Commands/differentialcommand.h"
+#include "../ViewModel/Commands/integralcommand.h"
 #include "../ViewModel/Commands/PaintCommand.h"
 #include "../ViewModel/ViewModel.h"
 #include "../Model/Model.h"
