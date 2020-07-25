@@ -110,31 +110,6 @@ void GrapherTest::QuadraticTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherTest::CubicTest()
-{
-    std::string str = "x^3";
-    double lowerbound = -10;
-    double upperbound = 10;
-    const double ExpectedIntegral = 0;
-    const double ExpectedDifferential = 300;
-    // Testing for Coordinates
-    PaintCommand->SetParameter(str, lowerbound, upperbound);
-    PaintCommand->Exec();
-    QCOMPARE((*x).size(), (*y).size());
-    for(int i = 0; i < (*x).size()-1; ++i)
-    {
-        QVERIFY(fabs((*x)[i]*(*x)[i]*(*x)[i] - (*y)[i]) < Error0);
-    }
-    // Testing for Integral
-    IntegralCommand->SetParameter(str, lowerbound, upperbound);
-    IntegralCommand->Exec();
-    QVERIFY(fabs(*IntegralAns-ExpectedIntegral) < Error0);
-    // Testing for Differential
-    DifferentialCommand->SetParameter(str, lowerbound);
-    DifferentialCommand->Exec();
-    QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
-}
-
 void GrapherTest::SineTest()
 {
     std::string str = "sin(x)";
