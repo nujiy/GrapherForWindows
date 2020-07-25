@@ -26,7 +26,7 @@ after_test:
   - windeployqt release\Grapher_Test.exe --qmldir %QTDIR%\qml
   - cd release
   - Grapher_Test.exe
-  - del *  /s/q
+  - del * /s/q
   - cd ..
 
 build_script:
