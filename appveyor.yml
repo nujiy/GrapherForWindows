@@ -29,6 +29,18 @@ after_build:
   - del *.cpp /s/q
   - del *.h /s/q
 
+build_script:
+  - call "%vcvars%"
+  - qmake Test/GrapherForWindows_Test.pro
+  - mingw32-make
+
+after_build:
+  - windeployqt release\GrapherForWindows_Test.exe --qmldir %QTDIR%\qml
+  - cd release
+  - del *.o /s/q
+  - del *.cpp /s/q
+  - del *.h /s/q
+
 artifacts:
   - path: release/
     name: $(releaseName)
