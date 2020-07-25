@@ -5,8 +5,6 @@
 #include "../Common/etlbase.h"
 #include "ViewModel/Sinks/ViewModelSink.h"
 #include "ViewModel/Commands/PaintCommand.h"
-#include "ViewModel/Commands/integralcommand.h"
-#include "ViewModel/Commands/differentialcommand.h"
 
 class ViewModel:public Proxy_PropertyNotification<ViewModel>,
         public Proxy_CommandNotification<ViewModel>

@@ -21,8 +21,6 @@ SOURCES += \
     Model/Model.cpp \
     ViewModel/Commands/CalculusCommand.cpp \
     ViewModel/Commands/PaintCommand.cpp \
-    ViewModel/Commands/differentialcommand.cpp \
-    ViewModel/Commands/integralcommand.cpp \
     ViewModel/Sinks/ViewModelSink.cpp \
     ViewModel/ViewModel.cpp \
     Test/Grapher_Test.cpp
@@ -40,7 +38,5 @@ HEADERS += \
     Model/Model.h \
     ViewModel/Commands/CalculusCommand.h \
     ViewModel/Commands/PaintCommand.h \
-    ViewModel/Commands/differentialcommand.h \
-    ViewModel/Commands/integralcommand.h \
     ViewModel/Sinks/ViewModelSink.h \
     ViewModel/ViewModel.h
