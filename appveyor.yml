@@ -22,7 +22,7 @@ build_script:
   - qmake Grapher_Test.pro
   - mingw32-make
 
-after_test:
+after_build:
   - windeployqt release\Grapher_Test.exe --qmldir %QTDIR%\qml
   - cd release
   - Grapher_Test.exe
@@ -34,7 +34,7 @@ test_script:
   - qmake Grapher.pro
   - mingw32-make
 
-after_build:
+after_test:
   - windeployqt release\Grapher.exe --qmldir %QTDIR%\qml
   - cd release
   - del *.o /s/q
