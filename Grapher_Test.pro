@@ -1,5 +1,6 @@
 QT +=  testlib
 QT += core
+QT += printsupport
 QT -= gui
 
 TARGET = Grapher_Test
