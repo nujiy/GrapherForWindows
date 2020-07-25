@@ -15,15 +15,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ../Algorithm/Lexer.cpp \
-    ../Algorithm/Tree.cpp \
-    ../Lib/qcustomplot.cpp \
-    ../Model/Model.cpp \
-    ../ViewModel/Commands/CalculusCommand.cpp \
-    ../ViewModel/Commands/PaintCommand.cpp \
-    ../ViewModel/Sinks/ViewModelSink.cpp \
-    ../ViewModel/ViewModel.cpp \
-    GrapherForWindows_Test.cpp
+    Algorithm/Lexer.cpp \
+    Algorithm/Tree.cpp \
+    Lib/qcustomplot.cpp \
+    Model/Model.cpp \
+    ViewModel/Commands/CalculusCommand.cpp \
+    ViewModel/Commands/PaintCommand.cpp \
+    ViewModel/Sinks/ViewModelSink.cpp \
+    ViewModel/ViewModel.cpp \
+    Test/GrapherForWindows_Test.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -31,12 +31,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    ../Algorithm/Lexer.h \
-    ../Algorithm/Tree.h \
-    ../Common/etlbase.h \
-    ../Lib/qcustomplot.h \
-    ../Model/Model.h \
-    ../ViewModel/Commands/CalculusCommand.h \
-    ../ViewModel/Commands/PaintCommand.h \
-    ../ViewModel/Sinks/ViewModelSink.h \
-    ../ViewModel/ViewModel.h
+    Algorithm/Lexer.h \
+    Algorithm/Tree.h \
+    Common/etlbase.h \
+    Lib/qcustomplot.h \
+    Model/Model.h \
+    ViewModel/Commands/CalculusCommand.h \
+    ViewModel/Commands/PaintCommand.h \
+    ViewModel/Sinks/ViewModelSink.h \
+    ViewModel/ViewModel.h

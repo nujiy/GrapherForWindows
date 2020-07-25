@@ -5,12 +5,12 @@
 #include "../Model/Model.h"
 
 #define Error0 1e-3
-class GrapherForWindowsTest : public QObject
+class GrapherTest : public QObject
 {
     Q_OBJECT
 
 public:
-    GrapherForWindowsTest();
+    GrapherTest();
 
     void set_paint_command(std::shared_ptr<ICommandBase> ptrCommand);
     void set_differential_command(std::shared_ptr<ICommandBase> ptrCommand);
@@ -44,7 +44,7 @@ private:
 };
 
 
-GrapherForWindowsTest::GrapherForWindowsTest()
+GrapherTest::GrapherTest()
 {
     model = std::make_shared<Model>();
     viewmodel = std::make_shared<ViewModel>();
@@ -59,7 +59,7 @@ GrapherForWindowsTest::GrapherForWindowsTest()
     DifferentialAns = viewmodel->getDifferential();
 }
 
-void GrapherForWindowsTest::LinearTest()
+void GrapherTest::LinearTest()
 {
     std::string str = "x";
     double lowerbound = 0;
@@ -84,7 +84,7 @@ void GrapherForWindowsTest::LinearTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::QuadraticTest()
+void GrapherTest::QuadraticTest()
 {
     std::string str = "x^2";
     double lowerbound = -10;
@@ -109,7 +109,7 @@ void GrapherForWindowsTest::QuadraticTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::CubicTest()
+void GrapherTest::CubicTest()
 {
     std::string str = "x^3";
     double lowerbound = -10;
@@ -134,7 +134,7 @@ void GrapherForWindowsTest::CubicTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::SineTest()
+void GrapherTest::SineTest()
 {
     std::string str = "sin(x)";
     double lowerbound = -10;
@@ -159,7 +159,7 @@ void GrapherForWindowsTest::SineTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::CosineTest()
+void GrapherTest::CosineTest()
 {
     std::string str = "cos(x)";
     double lowerbound = -10;
@@ -184,7 +184,7 @@ void GrapherForWindowsTest::CosineTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::TangentTest()
+void GrapherTest::TangentTest()
 {
     std::string str = "tan(x)";
     double lowerbound = -1;
@@ -209,7 +209,7 @@ void GrapherForWindowsTest::TangentTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::lgTest()
+void GrapherTest::lgTest()
 {
     std::string str = "lg(x)";
     double lowerbound = 1;
@@ -234,7 +234,7 @@ void GrapherForWindowsTest::lgTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::lnTest()
+void GrapherTest::lnTest()
 {
     std::string str = "ln(x)";
     double lowerbound = 1;
@@ -259,7 +259,7 @@ void GrapherForWindowsTest::lnTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::AbsTest()
+void GrapherTest::AbsTest()
 {
     std::string str = "abs(x)";
     double lowerbound = -10;
@@ -284,7 +284,7 @@ void GrapherForWindowsTest::AbsTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::SqrtTest()
+void GrapherTest::SqrtTest()
 {
     std::string str = "sqrt(x)";
     double lowerbound = 1;
@@ -309,7 +309,7 @@ void GrapherForWindowsTest::SqrtTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-void GrapherForWindowsTest::CompoundFuncTest()
+void GrapherTest::CompoundFuncTest()
 {
     std::string str = "10*sin(x)/(x^2+1)";
     double lowerbound = -10;
@@ -334,6 +334,6 @@ void GrapherForWindowsTest::CompoundFuncTest()
     QVERIFY(fabs(*DifferentialAns-ExpectedDifferential) < Error0);
 }
 
-QTEST_APPLESS_MAIN(GrapherForWindowsTest)
+QTEST_APPLESS_MAIN(GrapherTest)
 
 #include "MiniGrapher_Test.moc"

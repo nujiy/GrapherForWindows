@@ -19,7 +19,7 @@ before_build:
 
 build_script:
   - call "%vcvars%"
-  - qmake
+  - qmake Grapher.pro
   - mingw32-make
 
 after_build:
@@ -31,12 +31,11 @@ after_build:
 
 test_script:
   - call "%vcvars%"
-  - cd C:\projects\grapherforwindows\Test
-  - qmake GrapherForWindows_Test.pro
+  - qmake Grapher_Test.pro
   - mingw32-make
 
 after_test:
-  - windeployqt release\GrapherForWindows_Test.exe --qmldir %QTDIR%\qml
+  - windeployqt release\Grapher_Test.exe --qmldir %QTDIR%\qml
   - cd release
   - del *.o /s/q
   - del *.cpp /s/q
