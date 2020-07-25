@@ -2,6 +2,7 @@ QT +=  testlib
 QT += core
 QT -= gui
 
+TARGET = Grapher_Test
 CONFIG += c++11 console
 CONFIG -= app_bundle
 
