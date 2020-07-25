@@ -24,7 +24,6 @@ public:
 private Q_SLOTS:
     void LinearTest();
     void QuadraticTest();
-    void CubicTest();
     void SineTest();
     void CosineTest();
     void TangentTest();
