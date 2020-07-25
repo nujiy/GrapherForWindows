@@ -337,4 +337,4 @@ void GrapherTest::CompoundFuncTest()
 
 QTEST_APPLESS_MAIN(GrapherTest)
 
-#include "MiniGrapher_Test.moc"
+#include "Grapher_Test.moc"
