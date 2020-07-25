@@ -17,7 +17,7 @@ before_build:
   - set PATH=%PATH%;%QTDIR%\bin;C:MinGW\bin;%QTTOOLS%\bin;
   - if "%platform%"=="x64" set vcvars=%vs%\vcvars64.bat
 
-test_script:
+build_script:
   - call "%vcvars%"
   - qmake Grapher_Test.pro
   - mingw32-make
@@ -26,6 +26,17 @@ after_test:
   - windeployqt release\Grapher_Test.exe --qmldir %QTDIR%\qml
   - cd release
   - Grapher_Test.exe
+  - del * /s/q
+  - cd ..
+
+test_script:
+  - call "%vcvars%"
+  - qmake Grapher.pro
+  - mingw32-make
+
+after_build:
+  - windeployqt release\Grapher.exe --qmldir %QTDIR%\qml
+  - cd release
   - del *.o /s/q
   - del *.cpp /s/q
   - del *.h /s/q
