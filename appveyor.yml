@@ -41,6 +41,7 @@ after_test:
   - del *.o /s/q
   - del *.cpp /s/q
   - del *.h /s/q
+  - Grapher_Test.exe
 
 artifacts:
   - path: release/

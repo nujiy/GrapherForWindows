@@ -23,7 +23,7 @@ SOURCES += \
     ViewModel/Commands/PaintCommand.cpp \
     ViewModel/Sinks/ViewModelSink.cpp \
     ViewModel/ViewModel.cpp \
-    Test/GrapherForWindows_Test.cpp
+    Test/Grapher_Test.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
