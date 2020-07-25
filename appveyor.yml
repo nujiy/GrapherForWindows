@@ -31,7 +31,7 @@ after_build:
 
 test_script:
   - call "%vcvars%"
-  - qmake Test/GrapherForWindows_Test.pro
+  - qmake Test\GrapherForWindows_Test.pro
   - mingw32-make
 
 after_test:
