@@ -7,6 +7,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     APP Grapher;
     Grapher.run();
-
+    
     return a.exec();
 }

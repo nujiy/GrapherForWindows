@@ -1,5 +1,5 @@
 #include "PaintCommand.h"
-#include "../viewmodel.h"
+#include "../ViewModel.h"
 
 PaintCommand::PaintCommand(ViewModel *ptr_ViewModel)
 {

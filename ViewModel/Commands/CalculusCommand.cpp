@@ -1,5 +1,5 @@
-#include "calculuscommand.h"
-#include "../viewmodel.h"
+#include "CalculusCommand.h"
+#include "../ViewModel.h"
 
 IntegralCommand::IntegralCommand(ViewModel *ptr_ViewModel)
 {

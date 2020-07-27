@@ -1,8 +1,8 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "../Common/etlbase.h"
-#include "../Algorithm/lexer.h"
+#include "Common/etlbase.h"
+#include "Algorithm/Lexer.h"
 #include <memory>
 #include <vector>
 #include <QVector>
@@ -17,17 +17,18 @@ public:
     ~Model();
     std::shared_ptr<QVector<double>> getX();
     std::shared_ptr<QVector<double>> getY();
-    std::shared_ptr<double> getIntegral();
-    std::shared_ptr<double> getDifferential();
     std::string getString();
-    void differential(double x);
-    void integral(double a,double b);
     void cal(double a,double b);
     bool buildtree(const std::string str);
+
+    void differential(double x);
+    void integral(double a, double b);
+    std::shared_ptr<double> getIntegral();
+    std::shared_ptr<double> getDifferential();
 private:
-    std::shared_ptr<lexer> lexer;
+    std::shared_ptr<Lexer> lexer;
     std::shared_ptr<QVector<double>> x,y;
-    std::shared_ptr<double> IntegralAns,DifferentialAns;
+    std::shared_ptr<double> IntegralAnswer, DifferentialAnswer;
 };
 
 #endif 
